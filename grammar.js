@@ -39,6 +39,7 @@ module.exports = grammar({
     [$._expression, $._range_element],
     [$.function_definition, $._function_definition_with_end],
     [$.function_definition],
+    [$._function_definition_with_end],
     [$.block],
   ],
 
@@ -584,6 +585,7 @@ module.exports = grammar({
         repeat($.arguments_statement),
         optional($.block),
         optional(choice('end', 'endfunction')),
+        optional(';'),
       ),
     _function_definition_with_end: ($) =>
       seq(
@@ -596,6 +598,7 @@ module.exports = grammar({
         repeat($.arguments_statement),
         optional($.block),
         choice('end', 'endfunction'),
+        optional(';'),
       ),
 
     attribute: ($) => seq($.identifier, optional(seq('=', $._expression))),
@@ -638,6 +641,7 @@ module.exports = grammar({
         $._end_of_line,
         repeat($.property),
         'end',
+        optional(';'),
       ),
     function_signature: ($) =>
       seq(
@@ -659,6 +663,7 @@ module.exports = grammar({
           ),
         ),
         'end',
+        optional(';'),
       ),
     events: ($) =>
       seq(
@@ -667,6 +672,7 @@ module.exports = grammar({
         $._end_of_line,
         repeat(seq($.identifier, $._end_of_line)),
         'end',
+        optional(';'),
       ),
     _enum_value: ($) =>
       choice(
@@ -691,6 +697,7 @@ module.exports = grammar({
         $._end_of_line,
         repeat(seq($.enum, $._end_of_line)),
         'end',
+        optional(';'),
       ),
     class_definition: ($) =>
       seq(
