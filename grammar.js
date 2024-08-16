@@ -634,12 +634,26 @@ module.exports = grammar({
         optional($.default_value),
         $._end_of_line,
       ),
+    old_property: ($) =>
+      seq(
+        field(
+          'name',
+          choice($.identifier, $.property_name, $.ignored_argument),
+        ),
+        '@',
+        $.identifier,
+        optional($.old_property_type),
+        optional($.default_value),
+        $._end_of_line,
+      ),
+    old_property_type: ($) =>
+      choice('vector', 'matrix', 'scalar'),
     properties: ($) =>
       seq(
         'properties',
         optional($.attributes),
         $._end_of_line,
-        repeat($.property),
+        repeat(choice($.property, $.old_property)),
         'end',
         optional(';'),
       ),

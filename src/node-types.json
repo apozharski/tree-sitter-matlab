@@ -2303,6 +2303,53 @@
     }
   },
   {
+    "type": "old_property",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "ignored_argument",
+            "named": true
+          },
+          {
+            "type": "property_name",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "default_value",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "old_property_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "old_property_type",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "otherwise_clause",
     "named": true,
     "fields": {},
@@ -2516,6 +2563,10 @@
       "types": [
         {
           "type": "attributes",
+          "named": true
+        },
+        {
+          "type": "old_property",
           "named": true
         },
         {
@@ -3476,6 +3527,10 @@
     "named": true
   },
   {
+    "type": "matrix",
+    "named": false
+  },
+  {
     "type": "methods",
     "named": false
   },
@@ -3504,6 +3559,10 @@
     "named": true
   },
   {
+    "type": "scalar",
+    "named": false
+  },
+  {
     "type": "set.",
     "named": false
   },
@@ -3521,6 +3580,10 @@
   },
   {
     "type": "try",
+    "named": false
+  },
+  {
+    "type": "vector",
     "named": false
   },
   {
